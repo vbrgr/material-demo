@@ -1,20 +1,99 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-card>
+    <mat-toolbar color="primary">Checkbox</mat-toolbar>
+    <mat-card-content>
+<mat-checkbox
+#showDetails
+[value]=""
+[checked]="isChecked"
+(change)="onChange($event)"
+>Show Details</mat-checkbox>
+<div *ngIf="showDetails.checked">Some details ....</div>
+</mat-card-content>
+</mat-card>
 
+<mat-card>
+    <mat-toolbar color="primary">Radio</mat-toolbar>
+    <mat-card-content>
+    <mat-radio-group [value]="0" >
+    <mat-radio-button [value]="1">Male</mat-radio-button>
+    <mat-radio-button [value]="0" >Female</mat-radio-button>
+    </mat-radio-group>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-toolbar color="primary">Select</mat-toolbar>
+    <mat-card-content>
+    <mat-select [(ngModel)] ="color" >
+        <mat-option *ngFor="let color of colors" [value] = "color.id" >{{ color.name }}</mat-option>
+    </mat-select>
+    </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-toolbar color="primary">Input</mat-toolbar>
+    <mat-card-content>
+      <mat-form-field >
+        <input 
+        ngModel
+        #email="ngModel"
+        type="text" 
+        matInput  
+        maxlength="50"
+        placeholder="Email">
+        <mat-hint>Please type unique one</mat-hint>
+        <mat-error *ngIf="email.invalid && email.errors['required']">Email is required</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+      <mat-toolbar color="primary">Textarea</mat-toolbar>
+      <mat-card-content>
+        <mat-form-field >
+          <textarea 
+          ngModel
+          #address="ngModel"
+          placeholder="Address"
+          matInput
+          matTextareaAutosize
+          rows="2"
+          ></textarea>
+          <mat-hint>Please enter complete address with pincode</mat-hint>
+          <mat-error *ngIf="address.invalid && address.errors['required']">Address is required</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-toolbar color="primary">Date Picker</mat-toolbar>
+        <mat-card-content>
+          <mat-form-field >
+            <input 
+            (focus)="dob.open()"
+            [min]="minDate"
+            [max]="maxDate"
+            ngModel
+            readonly
+            placeholder="Date"
+            matInput
+           [matDatepicker]="dob"
+            rows="2"
+            >
+            <mat-datepicker-toggle [for]="dob" ></mat-datepicker-toggle>
+          </mat-form-field>
+          <mat-datepicker #dob touchUi="true"></mat-datepicker>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+          <mat-toolbar color="primary">Icons</mat-toolbar>
+          <mat-card-content>
+        <mat-icon>add_alert</mat-icon>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+          <mat-toolbar color="primary">Buttons</mat-toolbar>
+          <mat-card-content>
+        <button color="primary"  mat-button>Button</button>
+        <button color="primary" mat-raised-button>Button p</button>
+        <button color="accent" mat-raised-button>Button a</button>
+        <button color="warn" mat-raised-button>Button w</button>
+        <button mat-fab><mat-icon>check</mat-icon></button>
+        </mat-card-content>
+      </mat-card>

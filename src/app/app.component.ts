@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'material-demo';
+  isChecked = true;
+  minDate = new Date(2017, 0, 1);
+  maxDate = new Date(2019, 1, 1);
+  colors = [
+    {id: 1, name: 'green'},
+    {id: 2, name: 'blue'},
+    {id: 3, name: 'yellow'},
+    {id: 4, name: 'red'}
+  ];
+  color = 2;
+  onChange(e) {
+    console.log(e);
+  }
 }
