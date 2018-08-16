@@ -97,3 +97,16 @@
         <button mat-fab><mat-icon>check</mat-icon></button>
         </mat-card-content>
       </mat-card>
+      <mat-card>
+          <mat-toolbar color="primary">Chips</mat-toolbar>
+          <mat-card-content>
+            <mat-chip-list>
+              <mat-chip  
+              *ngFor="let category of categories"
+              (click)="selectCategory(category)"
+               [selected] ="category.selected" color="accent">
+              {{ category.name }}
+            </mat-chip>
+            </mat-chip-list>
+        </mat-card-content>
+      </mat-card>
